@@ -1,4 +1,15 @@
 # 継承
+* 講義実施者 : 石井 尊
+* 講義実施日 : 2018-09-28
+
+---
+# 要点
+* 継承ありきで抽象クラスから作ってしまうと無駄なコストがかかりがち。
+* 「共通の処理があるから抽象クラスにまとめよう」は本質的ではない。抽象クラス-具象クラスの関係が「一般-特殊」の関係になっているということが本質的な関心。
+* 「コンポジション」という選択肢もある。
+  * ペガサス is a 馬 → 継承向け
+  * 馬車 has a 馬 → コンポジション向け
+
 
 ---
 # 継承とは
@@ -36,6 +47,29 @@
 ---
 # サンプルプログラム
 
+### クラスの継承関係概念図
+
+```
+Item //商品
+  └ Sweet //お菓子
+      │
+      ├ Gum //ガム
+      │  └ KaijuGum //怪獣ガム
+      │
+      ├ Chocolate //チョコレート
+      │  └ RawChocolate //生チョコレート
+      │
+      ├ Candy //キャンディ
+      │  └ WarshipCandy //軍艦キャンディ
+      │
+      ├ Doughnut //ドーナツ
+      │  └ SushiDoughnut //寿司ドーナツ
+      │
+      └ PotatoChips //ポテトチップス
+         └ VirtualYoutuberChips //バーチューバーチップス
+```
+
+---
 ## 抽象クラス
 
 <span style="font-size:smaller;">
@@ -234,6 +268,56 @@ $virtual_youtuber_chips = new VirtualYoutuberChips();
 この要求にスマートに答えられるようにクラスの継承関係が作られていれば良さそう。
 
 ---
+## 各クラス 必要なメソッド一覧
+
+<table>
+  <tr>
+    <th valign="top">お菓子</th>
+    <th valign="top">getName()</th>
+    <th valign="top">getPrice()</th>
+    <th valign="top">getToy()</th>
+    <th valign="top">expireAt()</th>
+  </tr>
+  <tr>
+    <th valign="top">怪獣ガム</th>
+    <td valign="top" align="center">○</td>
+    <td valign="top" align="center">○</td>
+    <td valign="top" align="center">○</td>
+    <td valign="top" align="center">×</td>
+  </tr>
+  <tr>
+    <th valign="top">生チョコレート</th>
+    <td valign="top" align="center">○</td>
+    <td valign="top" align="center">○</td>
+    <td valign="top" align="center">×</td>
+    <td valign="top" align="center">○</td>
+  </tr>
+  <tr>
+    <th valign="top">軍艦キャンディ</th>
+    <td valign="top" align="center">○</td>
+    <td valign="top" align="center">○</td>
+    <td valign="top" align="center">○</td>
+    <td valign="top" align="center">×</td>
+  </tr>
+  <tr>
+    <th valign="top">寿司ドーナツ</th>
+    <td valign="top" align="center">○</td>
+    <td valign="top" align="center">○</td>
+    <td valign="top" align="center">×</td>
+    <td valign="top" align="center">×</td>
+  </tr>
+  <tr>
+    <th valign="middle">バーチューバーチップス</th>
+    <td valign="middle" align="center">○</td>
+    <td valign="middle" align="center">○</td>
+    <td valign="middle" align="center">○</td>
+    <td valign="middle" align="center">○</td>
+  </tr>
+</table>
+
+
+
+---
 # お菓子クラス改善への取り組み
 * スタート視点として、継承を使わず具象クラスから始める。
 
@@ -297,8 +381,9 @@ class VirtualYoutuberChips {
 
 ### 案 : Furniture（家具）
 * 明らかに悪い例として。
-* 「家具-寿司ドーナツ」は「一般-特殊」の関係になっていない。「家具」という概念は「お菓子」を含まない。
 * 例えば仮に既に`getName()`と`getPrice()`とを持っているFurnitureクラスが作られていたとして、「これメソッドがちょうどいいから継承元にしちゃえばいいじゃん」みたいなケースがあるかもしれないが、そういうヘンテコな継承をすると後々問題の原因となりやすい。
+* 「家具-寿司ドーナツ」は「一般-特殊」の関係になっていない。「家具」という概念は「お菓子」を含まない。
+* 「共通のメソッドを持っていること」がスーパークラスの本質なのではなく「一般-特殊の関係」が本質であるということ。
 
 ---
 # 適切なスーパークラスの吟味つづき
@@ -474,6 +559,20 @@ class VirtualYoutuberChips extends SweetWithToy {
 
 </span>
 
+---
+### クラスの継承関係概念図
+
+```
+Sweet //お菓子
+  │
+  ├ SweetWithToy //玩具菓子
+  │  ├ KaijuGum //怪獣ガム
+  │  ├ WarshipCandy //軍艦キャンディ
+  │  └ VirtualYoutuberChips //バーチューバーチップス
+  │
+  ├ RawChocolate //生チョコレート
+  └ SushiDoughnut //寿司ドーナツ
+```
 
 ---
 # 改善点
@@ -518,6 +617,7 @@ class VirtualYoutuberChips extends SweetWithToy {
 * 継承よりもコード量は多くなる。
 * [別ドキュメント参照「コンポジション」](./composition.md)
 
+---
 ## テンプレートメソッドパターン
 * デザインパターン（オブジェクト設計において定石となる手法をパターン化したもの）のひとつ。
 * 継承の仕組みを上手く利用して「具象クラスには固有の部分だけ持たせる」という手法。
