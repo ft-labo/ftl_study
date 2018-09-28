@@ -1,4 +1,6 @@
 # 依存関係の管理
+* 講義実施者 : 石井 尊
+* 講義実施日 : 2018-09-28
 
 ---
 # オブジェクトは他のオブジェクトへの依存性を持つ
@@ -79,9 +81,8 @@ AgeCalculator は User に依存している。
 
 * [依存方向の選択](./dependency_direction.md)
 * [引数の順番への依存を取り除く](./argument_order.md)
-* [依存の隔離](./dependency_isolation.md)
+* [依存の隔離](../easy_to_understand/dependency_isolation.md)
 * [依存オブジェクトの注入（Dependency Injection）](./dependency_injection.md)
-* [ラッパーモジュールで複雑な初期化を隔離](./wrapper_module.md)
 
 ---
 # 依存関係の解消や改善は常に冗長化になる
