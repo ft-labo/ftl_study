@@ -10,8 +10,25 @@
 * 呼び出し側からの端的な要求に応えられるようにクラスを設計する。
 
 ---
+## 端的な例
+https://robots.thoughtbot.com/tell-dont-ask
+
+Not so good:
+```
+<% if current_user.admin? %>
+  <%= current_user.admin_welcome_message %>
+<% else %>
+  <%= current_user.user_welcome_message %>
+<% end %>
+```
+
+Better:
+```
+<%= current_user.welcome_message %>
+```
+
+---
 # ケーススタディ
-* RPGのブラウザゲームのWebサイト
 * 画面上に様々なゲーム情報を表示する
 
 ---
