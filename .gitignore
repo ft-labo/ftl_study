@@ -1,2 +1,4 @@
 .DS_Store
 Icon?
+node_modules
+_book

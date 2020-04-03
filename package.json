@@ -1,0 +1,25 @@
+{
+  "name": "ftl_study",
+  "version": "1.0.0",
+  "description": "for study",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forthelocal/ftl_study.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/forthelocal/ftl_study/issues"
+  },
+  "homepage": "https://github.com/forthelocal/ftl_study#readme",
+  "devDependencies": {
+    "gitbook": "^2.6.9"
+  }
+}

@@ -1,0 +1,18 @@
+{
+    "plugins": [
+        "-sharing",
+        "hide-published-with",
+        "navigator",
+        "page-treeview",
+        "expandable-chapters",
+        "-lunr", "-search", "search-pro-kui"
+    ],
+    "language": "ja",
+    "pluginsConfig": {
+        "page-treeview": {
+            "copyright": "Copyright © FTL",
+            "minHeaderCount": "2",
+            "minHeaderDeep": "2"
+        }
+    }
+}

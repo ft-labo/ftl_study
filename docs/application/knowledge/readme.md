@@ -1,8 +1,10 @@
 # [知識編]
+
 ## 「変更の容易」なプログラムを作成するにあたって助けとなる知識
-* [依存性の低さ](./low_dependency)
-* [わかりやすさ](./easy_to_understand)
-* [再利用性の高さ](./reusability)
+
+* [依存性の低さ](low_dependency/readme.md)
+* [わかりやすさ](easy_to_understand/readme.md)
+* [再利用性の高さ](reusability/readme.md)
 
 ### 相乗作用
 * これらは相互に作用するものでもある。
